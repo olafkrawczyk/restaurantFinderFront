@@ -1,3 +1,4 @@
+import { OwnerModule } from './owner/owner.module';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
@@ -9,7 +10,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppDropdownDirective } from './shared/app-dropdown.directive';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AuthModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    OwnerModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
