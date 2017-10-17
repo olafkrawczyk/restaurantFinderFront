@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +9,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppDropdownDirective } from './shared/app-dropdown.directive';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,9 +21,10 @@ import { AppDropdownDirective } from './shared/app-dropdown.directive';
     AppRoutingModule,
     AuthModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,19 +11,19 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
-        <li class="dropdown" appAppDropdown>
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Client <span class="caret"></span></a>            
-          <ul class="dropdown-menu">
+        <li class="dropdown" ngbDropdown>
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button" ngbDropdownToggle>Client <span class="caret"></span></a>            
+          <ul class="dropdown-menu" ngbDropdownMenu>
             <li><a routerLink="/signup" style="cursor: pointer">Register</a></li>
             <li><a routerLink="/signin" style="cursor: pointer">Sign In</a></li>
           </ul>
         </li>
         
-        <li class="dropdown open" appAppDropdown>
-            <a style="cursor: pointer;" class="dropdown-toggle" role="button">Owner <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a style="cursor: pointer;">Log In</a></li>
-              <li><a style="cursor: pointer;">Register</a></li>
+        <li class="dropdown" ngbDropdown>
+            <a style="cursor: pointer;" class="dropdown-toggle" role="button" ngbDropdownToggle>Owner <span class="caret"></span></a>
+            <ul class="dropdown-menu" ngbDropdownMenu>
+              <li class="dropdown-item"><a style="cursor: pointer;">Log In</a></li>
+              <li class="dropdown-item"><a style="cursor: pointer;">Register</a></li>
             </ul>
         </li>
       </ul>

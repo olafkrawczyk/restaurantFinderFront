@@ -26,7 +26,7 @@ export class SingupComponent implements OnInit {
       password: form.value.password
     };
     console.log(user);
-    this.authService.signUpUser(user).subscribe(
+    this.authService.signUpClient(user).subscribe(
       (response) => {
         console.log(response);
         this.router.navigate(['confirmation']);
