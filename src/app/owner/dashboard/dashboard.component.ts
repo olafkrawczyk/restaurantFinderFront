@@ -1,3 +1,4 @@
+import { Restaurant } from './../../models/restaurant';
 import { RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  restaurants: Restaurant[] = [
+    {name: '7 misek', description: 'Thati fusion', imageURL: '#'},
+    {name: 'Pasta', description: 'Italian', imageURL: '#'},
+    {name: 'Patelnia na Szewskiej', description: 'Custom', imageURL: '#'},
+  ];
   constructor() { }
 
   ngOnInit() {

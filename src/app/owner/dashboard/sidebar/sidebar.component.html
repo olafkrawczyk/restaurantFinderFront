@@ -1,4 +1,4 @@
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="sidebar">
 
   <div class="row-fluid">
     <img src="/assets/logo_text.png" alt="" class="img-responsive">
@@ -10,19 +10,8 @@
   </div>
 
   <ul class="nav nav-sidebar">
-    <li class="active">
-      <a href="#">Centralny Port Lotniczy
-        <span class="sr-only">(current)</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">Pasta</a>
-    </li>
-    <li>
-      <a href="#">7 misek</a>
-    </li>
-    <li>
-      <a href="#">Patelnia na Szewskiej</a>
+    <li *ngFor="let restaurant of restaurants">
+      <a href="#">{{ restaurant.name }}</a>
     </li>
   </ul>
 </div>
