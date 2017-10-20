@@ -1,13 +1,14 @@
+import { OwnerRoutingModule } from './owner-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestaurantsComponent } from './restaurants/restaurants.component';
-import { RestaurantsListComponent } from './restaurants/restaurants-list/restaurants-list.component';
-import { RestaurantListItemComponent } from './restaurants/restaurants-list/restaurant-list-item/restaurant-list-item.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    OwnerRoutingModule
   ],
-  declarations: [RestaurantsComponent, RestaurantsListComponent, RestaurantListItemComponent]
+  declarations: [DashboardComponent, SidebarComponent]
 })
 export class OwnerModule { }

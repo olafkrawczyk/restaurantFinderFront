@@ -1,4 +1,4 @@
-import { RestaurantsComponent } from './owner/restaurants/restaurants.component';
+import { DashboardComponent } from './owner/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { SingupComponent } from './auth/singup/singup.component';
 import { AppComponent } from './app.component';
@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'restaurants', component: RestaurantsComponent}
+    {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
