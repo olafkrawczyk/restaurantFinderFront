@@ -1,3 +1,4 @@
+import { RestaurantService } from './../../restaurant.service';
 import { Table } from './../../../models/table.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -8,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-restaurant.component.css']
 })
 export class EditRestaurantComponent implements OnInit {
-  cuisines = ['Italian', 'Thai', 'Japanese', 'Fast Food'];
+  cuisines = ['ITALIAN', 'THAI', 'Japanese', 'Fast Food'];
   tables: Table[] = [];
   restaurantForm: FormGroup;
 
-  constructor() { }
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.restaurantForm = new FormGroup({
@@ -22,24 +23,32 @@ export class EditRestaurantComponent implements OnInit {
       'description': new FormControl(null),
       'openHour': new FormControl(null),
       'closeHour': new FormControl(null),
+      'phone': new FormControl(null),
+      'email': new FormControl(null),
       'address' : new FormGroup({
-        'phone': new FormControl(null),
-        'email': new FormControl(null),
         'street': new FormControl(null),
-        'city': new FormControl(null)
+        'city': new FormControl(null),
+        'postalCode': new FormControl(null)
       })
     });
   }
 
   onSubmit() {
     console.log('Submited!');
+    this.restaurantForm.value.tables = this.tables;
     console.log(this.restaurantForm.value);
-    console.log(this.tables);
+    this.restaurantService.saveNewRestaurant(this.restaurantForm.value).subscribe(
+      (respose) => {
+        console.log('Success!!!');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   onAddTable(tableId, tableSeats) {
-    console.log('Table: ' + tableId + ' seats: ' + tableSeats);
-    this.tables.push({id: 1, restaurantId: tableId, seats: tableSeats});
+    this.tables.push({id: null, restaurantTableId: tableId, seats: tableSeats});
   }
 
   onDeleteTable(index) {

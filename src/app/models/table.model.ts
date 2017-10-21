@@ -1,5 +1,5 @@
 export class Table {
     id;
-    restaurantId;
+    restaurantTableId;
     seats;
 }

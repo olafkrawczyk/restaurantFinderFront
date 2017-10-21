@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
     private user: User;
+    private isOwner = false;
     constructor(private router: Router, private http: Http) { }
 
     signUpClient(user: User) {
@@ -16,6 +17,14 @@ export class AuthService {
         return this.http.post('http://localhost:8080/clients/login', {emailAddress: email, password: password});
     }
 
+    signUpOwner(user: User) {
+        return this.http.post('http://localhost:8080/owners/new', user);
+    }
+
+    signInOwner(email: string, password: string) {
+        return this.http.post('http://localhost:8080/owners/login', {emailAddress: email, password: password});
+    }
+
     getUser() {
         return this.user;
     }
@@ -24,7 +33,12 @@ export class AuthService {
         this.user = user;
     }
 
+    setOwner() {
+        this.isOwner = true;
+    }
+
     logoutUser() {
         this.user = null;
+        this.isOwner = false;
     }
 }

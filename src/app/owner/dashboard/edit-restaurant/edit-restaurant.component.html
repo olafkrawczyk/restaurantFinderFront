@@ -35,6 +35,14 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="phone" class="col-sm-6">Phone number</label>
+            <input type="text" id="phone" name="phone" class="form-control" formControlName="phone">
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-6">Email</label>
+            <input type="text" id="email" name="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group">
             <label for="photo" class="col-sm-2">Photo</label>
             <input type="file" id="photo" name="photo" class="form-control" formControlName="photo">
           </div>
@@ -56,20 +64,16 @@
         <h4>Contact & address</h4>
         <div class="dashboard-widget-body" formGroupName="address">
           <div class="form-group">
-            <label for="phone" class="col-sm-6">Phone number</label>
-            <input type="text" id="phone" name="phone" class="form-control" formControlName="phone">
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-6">Email</label>
-            <input type="text" id="email" name="email" class="form-control" formControlName="email">
-          </div>
-          <div class="form-group">
             <label for="street" class="col-sm-6">Street</label>
             <input type="text" id="street" name="street" class="form-control" formControlName="street">
           </div>
           <div class="form-group">
             <label for="city" class="col-sm-6">City</label>
             <input type="text" id="city" name="city" class="form-control" formControlName="city">
+          </div>
+          <div class="form-group">
+            <label for="postalCode" class="col-sm-6">Postal code</label>
+            <input type="text" id="postalCode" name="postalCode" class="form-control" formControlName="postalCode">
           </div>
         </div>
       </div>
@@ -104,7 +108,7 @@
           <tbody>
             <tr *ngFor="let table of tables; let i = index">
               <td>{{ i }}</td>
-              <td>{{ table.restaurantId }}</td>
+              <td>{{ table.restaurantTableId }}</td>
               <td>{{ table.seats }}</td>
               <td>
                 <button type="button" class="btn btn-xs btn-block btn-warning" (click)="onDeleteTable(i)">x</button>

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand">{{title}}</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a routerLink="/restaurants">Restaurants</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/reservations">Reservations</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown" ngbDropdown *ngIf="!authService.getUser()">
+        <a style="cursor: pointer;" class="dropdown-toggle" role="button" ngbDropdownToggle>Client
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu>
+          <li>
+            <a routerLink="/signin" style="cursor: pointer">Sign In</a>
+          </li>
+          <li>
+            <a routerLink="/signup" style="cursor: pointer">Register</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="dropdown" ngbDropdown *ngIf="!authService.getUser()">
+        <a style="cursor: pointer;" class="dropdown-toggle" role="button" ngbDropdownToggle>Owner
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu>
+          <li class="dropdown-item">
+            <a style="cursor: pointer;" routerLink="/owner_signin">Sign In</a>
+          </li>
+          <li class="dropdown-item">
+            <a style="cursor: pointer;" routerLink="/owner_signup">Register</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="container pull-right" *ngIf="authService.getUser()">
+      <button type="button" class="btn btn-default navbar-btn pull-right">Logout</button>
+      <p class="navbar-text pull-right">Signed in as
+        <a href="#" class="navbar-link">J. Kaczyński</a>
+      </p>
+    </div>
+  </div>
+</nav>

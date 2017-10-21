@@ -1,3 +1,4 @@
+import { RestaurantService } from './owner/restaurant.service';
 import { OwnerModule } from './owner/owner.module';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
@@ -11,11 +12,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppDropdownDirective } from './shared/app-dropdown.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, AppDropdownDirective
+    AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot(),
     OwnerModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, RestaurantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,19 +1,17 @@
-import { User } from './../../models/user';
-import { AuthService } from './../auth.service';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from './../auth.service';
+import { User } from './../../models/user';
+import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.css'],
-  providers: []
+  selector: 'app-owner-signup',
+  templateUrl: './owner-signup.component.html',
+  styleUrls: ['./owner-signup.component.css']
 })
-export class SingupComponent implements OnInit {
+export class OwnerSignupComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) {
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,7 +25,7 @@ export class SingupComponent implements OnInit {
       password: form.value.password
     };
     console.log(user);
-    this.authService.signUpClient(user).subscribe(
+    this.authService.signUpOwner(user).subscribe(
       (response) => {
         console.log(response);
         this.router.navigate(['confirmation']);
@@ -37,5 +35,4 @@ export class SingupComponent implements OnInit {
       }
     );
   }
-
 }

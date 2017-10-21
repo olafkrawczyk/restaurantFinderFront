@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { Component } from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,7 +11,7 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   title = 'TableReserv';
 
-  constructor(config: NgbDropdownConfig) {
+  constructor(config: NgbDropdownConfig, private authService: AuthService) {
     config.placement = 'bottom-right';
   }
 }

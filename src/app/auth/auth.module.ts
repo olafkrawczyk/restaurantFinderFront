@@ -6,13 +6,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SingupComponent } from './singup/singup.component';
 import { FormsModule } from '@angular/forms';
+import { OwnerSignupComponent } from './owner-signup/owner-signup.component';
+import { OwnerSigninComponent } from './owner-signin/owner-signin.component';
 
 @NgModule({
   imports: [
     FormsModule,
     AuthRoutingModule
   ],
-  declarations: [SingupComponent, ConfirmationComponent, SinginComponent],
+  declarations: [SingupComponent, ConfirmationComponent, SinginComponent, OwnerSignupComponent, OwnerSigninComponent],
   providers: [AuthService]
 })
 export class AuthModule { }
