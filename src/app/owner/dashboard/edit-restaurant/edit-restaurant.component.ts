@@ -20,6 +20,8 @@ export class EditRestaurantComponent implements OnInit {
       'cuisine': new FormControl(this.cuisines[0]),
       'photo': new FormControl(null),
       'description': new FormControl(null),
+      'openHour': new FormControl(null),
+      'closeHour': new FormControl(null),
       'address' : new FormGroup({
         'phone': new FormControl(null),
         'email': new FormControl(null),
@@ -32,6 +34,7 @@ export class EditRestaurantComponent implements OnInit {
   onSubmit() {
     console.log('Submited!');
     console.log(this.restaurantForm.value);
+    console.log(this.tables);
   }
 
   onAddTable(tableId, tableSeats) {
