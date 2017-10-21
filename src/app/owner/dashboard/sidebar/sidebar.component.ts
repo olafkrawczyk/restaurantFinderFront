@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Restaurant } from './../../../models/restaurant';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   @Input() restaurants: Restaurant[];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

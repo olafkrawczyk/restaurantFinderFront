@@ -14,7 +14,6 @@ import { OwnerSigninComponent } from './owner-signin/owner-signin.component';
     FormsModule,
     AuthRoutingModule
   ],
-  declarations: [SingupComponent, ConfirmationComponent, SinginComponent, OwnerSignupComponent, OwnerSigninComponent],
-  providers: [AuthService]
+  declarations: [SingupComponent, ConfirmationComponent, SinginComponent, OwnerSignupComponent, OwnerSigninComponent]
 })
 export class AuthModule { }
