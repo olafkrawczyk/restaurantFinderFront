@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { OwnerRoutingModule } from './owner-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +9,8 @@ import { EditRestaurantComponent } from './dashboard/edit-restaurant/edit-restau
 @NgModule({
   imports: [
     CommonModule,
-    OwnerRoutingModule
+    OwnerRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [DashboardComponent, SidebarComponent, EditRestaurantComponent]
 })
