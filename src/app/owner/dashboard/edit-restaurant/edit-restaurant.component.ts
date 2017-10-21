@@ -1,3 +1,4 @@
+import { Table } from './../../../models/table.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditRestaurantComponent implements OnInit {
   cuisines = ['Italian', 'Thai', 'Japanese', 'Fast Food'];
+  tables: Table[] = [];
   restaurantForm: FormGroup;
 
   constructor() { }
@@ -30,5 +32,14 @@ export class EditRestaurantComponent implements OnInit {
   onSubmit() {
     console.log('Submited!');
     console.log(this.restaurantForm.value);
+  }
+
+  onAddTable(tableId, tableSeats) {
+    console.log('Table: ' + tableId + ' seats: ' + tableSeats);
+    this.tables.push({id: 1, restaurantId: tableId, seats: tableSeats});
+  }
+
+  onDeleteTable(index) {
+    this.tables.splice(index, 1);
   }
 }
