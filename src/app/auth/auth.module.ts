@@ -12,7 +12,8 @@ import { OwnerSigninComponent } from './owner-signin/owner-signin.component';
 @NgModule({
   imports: [
     FormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    CommonModule
   ],
   declarations: [SingupComponent, ConfirmationComponent, SinginComponent, OwnerSignupComponent, OwnerSigninComponent]
 })

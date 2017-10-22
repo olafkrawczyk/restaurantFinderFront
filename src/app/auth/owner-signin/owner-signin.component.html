@@ -12,6 +12,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" value="" id="password" ngModel class="form-control">
       </div>
+      <span class="help-block" *ngIf="errorMessage">{{errorMessage}}</span>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>

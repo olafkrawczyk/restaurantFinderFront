@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerSigninComponent implements OnInit {
 
+  errorMessage: string;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -23,8 +24,9 @@ export class OwnerSigninComponent implements OnInit {
         console.log(this.authService.getUser());
         this.router.navigate(['dashboard']);
       },
-      (error) => {
+      (error: Response) => {
         console.log(error);
+        this.errorMessage = 'Could not find user with gievn email address';
       }
     );
   }
