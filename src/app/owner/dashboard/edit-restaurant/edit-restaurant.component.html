@@ -52,45 +52,45 @@
       </div>
     </div>
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-        <div class="dashboard-widget" style="margin-top:10px">
-          <h4>Tables</h4>
-          <div class="row">
-            <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-              <label for="tableId">Id</label>
-              <input type="text" id="tableId" class="form-control" #tableId>
-            </div>
-            <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-              <label for="seats">Seats</label>
-              <select name="seats" id="seats" class="form-control" #tableSeats>
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-              </select>
-            </div>
-            <button type="button" class="btn btn-primary" (click)="onAddTable(tableId.value, tableSeats.value)"> +Add</button>
+      <div class="dashboard-widget" style="margin-top:10px">
+        <h4>Tables</h4>
+        <div class="row">
+          <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <label for="tableId">Id</label>
+            <input type="text" id="tableId" class="form-control" #tableId>
           </div>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Id</th>
-                <th>Seats</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let table of tables; let i = index">
-                <td>{{ i }}</td>
-                <td>{{ table.restaurantTableId }}</td>
-                <td>{{ table.seats }}</td>
-                <td>
-                  <button type="button" class="btn btn-xs btn-block btn-warning" (click)="onDeleteTable(i)">x</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <label for="seats">Seats</label>
+            <select name="seats" id="seats" class="form-control" #tableSeats>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="onAddTable(tableId.value, tableSeats.value)"> +Add</button>
         </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Id</th>
+              <th>Seats</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let table of tables; let i = index">
+              <td>{{ i }}</td>
+              <td>{{ table.restaurantTableId }}</td>
+              <td>{{ table.seats }}</td>
+              <td>
+                <button type="button" class="btn btn-xs btn-block btn-warning" (click)="onDeleteTable(i)">x</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
   </div>
   <div class="row dashboard-content">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -110,6 +110,70 @@
             <input type="text" id="postalCode" name="postalCode" class="form-control" formControlName="postalCode">
           </div>
         </div>
+      </div>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <div class="dashboard-widget">
+        <h4>Menu</h4>
+        <div class="row">
+          <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <label for="tableId">Name</label>
+            <input type="text" id="tableId" class="form-control" #tableId>
+          </div>
+          <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <label for="tableId">Price</label>
+              <input type="text" id="tableId" class="form-control" #tableId>
+            </div>
+          <div class="form-group col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <label for="tableId">Description</label>
+            <input type="text" id="tableId" class="form-control" #tableId>
+          </div>
+          <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <label></label>
+            <button type="button" class="form-control btn btn-primary" (click)="onAddTable(tableId.value, tableSeats.value)"> +Add</button>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Smoked salmon</td>
+              <td>Smoked salmon with ragou</td>
+              <td>24,30</td>
+              <td>
+                <div class="buttons-outer">
+                  <div class="buttons-inner">
+                      <button type="button" class="btn btn-xs btn-block btn-warning" (click)="onDeleteTable(i)">Delete</button>
+                      <button type="button" class="btn btn-xs btn-block btn-default" (click)="onDeleteTable(i)">Edit</button>                      
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Smoked salmon</td>
+                <td>Smoked salmon with ragou</td>
+                <td>24,30</td>
+                <td>
+                  <div class="buttons-outer">
+                    <div class="buttons-inner">
+                        <button type="button" class="btn btn-xs btn-block btn-warning" (click)="onDeleteTable(i)">Delete</button>
+                        <button type="button" class="btn btn-xs btn-block btn-default" (click)="onDeleteTable(i)">Edit</button>                      
+                    </div>
+                  </div>
+                </td>
+              </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

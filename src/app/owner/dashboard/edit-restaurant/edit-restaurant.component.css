@@ -22,3 +22,12 @@ textarea {
     max-height: 100%;
     min-width: 100%;
 }
+
+.buttons-outer
+{
+    width:100%;
+}
+.buttons-inner
+{
+    display: inline-block;
+}
