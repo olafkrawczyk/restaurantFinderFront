@@ -1,16 +1,16 @@
+import { Restaurant } from './../models/restaurant';
 import { User } from './../models/user';
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class RestaurantService {
 
-    constructor(private router: Router, private http: Http) { }
+    restaurantsListChanged = new Subject<Restaurant[]>();
 
-    signUpClient(user: User) {
-        return this.http.post('http://localhost:8080/clients', user);
-    }
+    constructor(private router: Router, private http: Http) { }
 
     saveNewRestaurant(requestBody) {
         return this.http.post('http://localhost:8080/restaurants/new', requestBody);

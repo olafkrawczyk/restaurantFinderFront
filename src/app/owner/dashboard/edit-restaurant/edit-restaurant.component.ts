@@ -1,4 +1,4 @@
-import { RestaurantService } from './../../restaurant.service';
+import { RestaurantService } from './../../../restaurants/restaurant.service';
 import { Table } from './../../../models/table.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';

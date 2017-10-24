@@ -1,4 +1,4 @@
-import { RestaurantService } from './owner/restaurant.service';
+import { RestaurantService } from './restaurants/restaurant.service';
 import { OwnerModule } from './owner/owner.module';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
