@@ -11,7 +11,7 @@
 
   <ul class="nav nav-sidebar">
     <li *ngFor="let restaurant of restaurants">
-      <a href="#">{{ restaurant.name }}</a>
+      <a [routerLink]="'/dashboard/details/'+restaurant.id">{{ restaurant.name }}</a>
     </li>
   </ul>
 </div>

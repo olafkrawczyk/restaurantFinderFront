@@ -7,7 +7,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({

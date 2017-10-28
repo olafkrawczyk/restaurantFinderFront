@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { EditRestaurantComponent } from './dashboard/edit-restaurant/edit-restaurant.component';
+import { RestaurantDetailsComponent } from './dashboard/restaurant-details/restaurant-details.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { EditRestaurantComponent } from './dashboard/edit-restaurant/edit-restau
     OwnerRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DashboardComponent, SidebarComponent, EditRestaurantComponent]
+  declarations: [DashboardComponent, SidebarComponent, EditRestaurantComponent, RestaurantDetailsComponent]
 })
 export class OwnerModule { }

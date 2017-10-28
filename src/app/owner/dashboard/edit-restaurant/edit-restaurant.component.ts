@@ -1,7 +1,9 @@
+import { MenuItem } from './../../../models/menu-item.model';
 import { RestaurantService } from './../../../restaurants/restaurant.service';
 import { Table } from './../../../models/table.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit-restaurant',
@@ -11,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class EditRestaurantComponent implements OnInit {
   cuisines = ['ITALIAN', 'THAI', 'Japanese', 'Fast Food'];
   tables: Table[] = [];
+  menu: MenuItem[] = [];
   restaurantForm: FormGroup;
 
   constructor(private restaurantService: RestaurantService) { }
@@ -36,10 +39,12 @@ export class EditRestaurantComponent implements OnInit {
   onSubmit() {
     console.log('Submited!');
     this.restaurantForm.value.tables = this.tables;
+    this.restaurantForm.value.menuItems = this.menu;
     console.log(this.restaurantForm.value);
     this.restaurantService.saveNewRestaurant(this.restaurantForm.value).subscribe(
       (respose) => {
         console.log('Success!!!');
+        this.restaurantService.refreshRestaurantsList();
       },
       (error) => {
         console.log(error);
@@ -53,5 +58,13 @@ export class EditRestaurantComponent implements OnInit {
 
   onDeleteTable(index) {
     this.tables.splice(index, 1);
+  }
+
+  onAddDish(name: string, price: number, description: string) {
+    this.menu.push({dishName: name, price: price, description: description});
+  }
+
+  onDeleteDish(index) {
+    this.menu.splice(index, 1);
   }
 }

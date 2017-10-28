@@ -1,22 +1,34 @@
+import { RestaurantService } from './../../restaurants/restaurant.service';
+import { Subscription } from 'rxjs/Subscription';
 import { Restaurant } from './../../models/restaurant';
 import { RouterModule } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-  restaurants: Restaurant[] = [
-    {name: '7 misek', description: 'Thati fusion', imageURL: '#'},
-    {name: 'Pasta', description: 'Italian', imageURL: '#'},
-    {name: 'Patelnia na Szewskiej', description: 'Custom', imageURL: '#'},
-  ];
-  constructor() { }
+  restaurantStubSubscription: Subscription;
+  restaurants: Restaurant[];
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
+    this.restaurantStubSubscription = this.restaurantService.restaurantsListChanged.subscribe(
+      (data: Restaurant[]) => {
+        this.restaurants = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.restaurantService.refreshRestaurantsList();
+  }
+
+  ngOnDestroy() {
+    this.restaurantStubSubscription.unsubscribe();
   }
 
 }
