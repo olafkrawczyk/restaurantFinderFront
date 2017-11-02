@@ -14,11 +14,12 @@ import { AppDropdownDirective } from './shared/app-dropdown.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { HeaderComponent } from './header/header.component';
+import { RestaurantComponent } from './restaurants/restaurant.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent
+    AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent, RestaurantComponent
   ],
   imports: [
     BrowserModule,
