@@ -26,7 +26,7 @@
         <div class="form-group">
           <ng-datepicker [(ngModel)]="date" name="date"></ng-datepicker>
         </div>
-        <select name="hour" id="hour" class="form-control" ngModel>
+        <select name="time" id="time" class="form-control" ngModel>
             <option value="10:00">10:00</option>
             <option value="12:00">12:00</option>
             <option value="14:00">14:00</option>
@@ -84,7 +84,10 @@
             </div>
 
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <button type="button" class="btn btn-primary center-block" style="margin-top: 4rem;">Book table</button>
+              <button type="button" 
+                      class="btn btn-primary center-block" 
+                      style="margin-top: 4rem;" 
+                      (click)="onBookRestaurantClicked(restaurant.id)">Book table</button>
             </div>
           </div>
         </div>

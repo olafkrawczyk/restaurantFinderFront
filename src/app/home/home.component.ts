@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { RestaurantService } from './../restaurants/restaurant.service';
 import { Restaurant } from './../models/restaurant';
@@ -11,9 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   date: Date;
+  people: string;
+  time: string;
   restaurants: Restaurant[];
 
-  constructor(private authService: AuthService, private restaurantService: RestaurantService) {
+  constructor(private authService: AuthService, private restaurantService: RestaurantService,
+              private router: Router) {
     this.date = new Date();
   }
 
@@ -26,7 +30,8 @@ export class HomeComponent implements OnInit {
 
   onSearchSubmit(form: NgForm) {
     console.log(form.value);
-    console.log(this.date);
+    this.people = form.value['people'];
+    this.time = form.value['time'];
     this.restaurantService.getRestaurantsByParams(form.value).subscribe(
       (data) => {
         console.log(data.json());
@@ -36,5 +41,9 @@ export class HomeComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onBookRestaurantClicked(id: number) {
+    this.router.navigate(['/restaurant/', id], {queryParams : {people: this.people, date: this.date, time: this.time}});
   }
 }
