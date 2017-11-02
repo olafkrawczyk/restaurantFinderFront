@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private authService: AuthService) { }
+  date: Date;
+  constructor(private authService: AuthService) {
+    this.date = new Date();
+  }
 
   ngOnInit() {
   }

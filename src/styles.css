@@ -3,3 +3,7 @@ body {
     padding-top: 70px;
     background: #f5f5f5 !important;
  }
+
+ .ngx-datepicker-calendar-container {
+    z-index: 1000;
+}

@@ -1,16 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a routerLink="/" class="navbar-brand">{{title}}</a>
+        
+      <a routerLink="/" class="navbar-brand">
+        {{title}}
+      </a>
     </div>
-    <ul class="nav navbar-nav pull-left">
-      <li routerLinkActive="active">
-        <a routerLink="/restaurants">Restaurants</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="/reservations">Reservations</a>
-      </li>
-    </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown" ngbDropdown *ngIf="!authService.getUser()">
         <a style="cursor: pointer;" class="dropdown-toggle" role="button" ngbDropdownToggle>Client

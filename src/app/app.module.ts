@@ -12,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppDropdownDirective } from './shared/app-dropdown.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgDatepickerModule } from 'ng2-datepicker';
 import { HeaderComponent } from './header/header.component';
 
 
@@ -26,7 +27,8 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    OwnerModule
+    OwnerModule,
+    NgDatepickerModule
   ],
   providers: [AuthService, RestaurantService],
   bootstrap: [AppComponent]

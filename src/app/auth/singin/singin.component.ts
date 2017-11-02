@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../models/user';
 import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SinginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class SinginComponent implements OnInit {
       (response) => {
         this.authService.setUser(response.json());
         console.log(this.authService.getUser());
+        this.router.navigate(['/']);
       },
       (error) => {
         console.log(error);
