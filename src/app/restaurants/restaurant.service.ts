@@ -13,7 +13,9 @@ export class RestaurantService {
     restaurantsStubsList: Restaurant[] = [];
 
     constructor(private router: Router, private http: Http, private authService: AuthService) {
-        this.refreshRestaurantsList();
+        if (authService.isOwner()) {
+            this.refreshRestaurantsList();
+        }
     }
 
     saveNewRestaurant(requestBody) {
@@ -36,5 +38,9 @@ export class RestaurantService {
 
     getRestaurantInfo(id: number) {
         return this.http.get('http://localhost:8080/restaurants/' + id);
+    }
+
+    getRestaurantsByParams(data) {
+        return this.http.post('http://localhost:8080/restaurants/findByParameters', data);
     }
 }

@@ -5,17 +5,17 @@
     <div class="jumbotron centered">
       <h1>Welcome to TableReserve</h1>
       <p>Please start with filling form below</p>
-      <form class="form-inline">
+      <form class="form-inline" (ngSubmit)="onSearchSubmit(f)" #f="ngForm">
 
         <label for="people"> People</label>
-        <select name="people" class="form-control">
+        <select name="people" class="form-control" ngModel>
           <option value="2">2</option>
           <option value="4">4</option>
           <option value="6">6</option>
         </select>
 
         <label for="city"> City</label>
-        <select name="city" class="form-control">
+        <select name="city" class="form-control" ngModel>
           <option value="krakow">Kraków</option>
           <option value="katowice">Katowice</option>
           <option value="wroclaw">Wrocław</option>
@@ -25,16 +25,15 @@
         <div class="form-group">
           <ng-datepicker [(ngModel)]="date" name="date"></ng-datepicker>
         </div>
-        <input type="time" name="time" id="time" class="form-control" step="900">
+        <input type="time" name="time" id="time" class="form-control" step="900" ngModel>
 
         <label for="cuisine"> Cuisine</label>
-        <select name="cuisine" class="form-control">
+        <select name="cuisine" class="form-control" ngModel>
           <option value="all">All</option>
           <option value="italian">Italian</option>
           <option value="japanese">Japanese</option>
           <option value="fast-food">Fast food</option>
         </select>
-
 
         <div class="btn-group">
           <button type="submit" class="btn btn-primary">Search</button>
@@ -46,12 +45,43 @@
     <p *ngIf="getUser()">
       WELCOME!
     </p>
-    <p>Home works!</p>
-
   </div>
 
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+    <div class="alert alert-info" *ngIf="!restaurants">
+      To start please fill form above ...
+    </div>
+
+
+    <div class="row" *ngFor="let restaurant of restaurants">
+      <div class="panel panel-default">
+        <div class="panel-body" style="max-height: 15rem;">
+          <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+              <img src="#" class="img-responsive" alt="Image" src="/assets/logo.png" style="max-height: 12rem">
+
+            </div>
+
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+              <h3>{{ restaurant.name }}</h3>
+              <p>{{ restaurant.address.street }}, open hours {{restaurant.openHour}} - {{restaurant.closeHour}}</p>
+              <p>{{restaurant.description}}
+                <br>
+              </p>
+
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <button type="button" class="btn btn-primary center-block" style="margin-top: 4rem;">Book table</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="panel panel-default">
@@ -79,33 +109,6 @@
         </div>
       </div>
     </div>
-
-    <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-body" style="max-height: 15rem;">
-            <div class="row">
-              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-  
-                <img src="#" class="img-responsive" alt="Image" src="/assets/logo.png" style="max-height: 12rem">
-  
-              </div>
-  
-              <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                <h3>Restaurnat name</h3>
-                <p>Rynek 6, open hours 7:00 - 22:00</p>
-                <p>Description and prices
-                  <br>
-                </p>
-  
-              </div>
-  
-              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <button type="button" class="btn btn-primary center-block" style="margin-top: 4rem;">Book table</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
   </div>
 

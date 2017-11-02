@@ -1,3 +1,6 @@
+import { NgForm } from '@angular/forms';
+import { RestaurantService } from './../restaurants/restaurant.service';
+import { Restaurant } from './../models/restaurant';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   date: Date;
-  constructor(private authService: AuthService) {
+  restaurants: Restaurant[];
+
+  constructor(private authService: AuthService, private restaurantService: RestaurantService) {
     this.date = new Date();
   }
 
@@ -17,5 +22,19 @@ export class HomeComponent implements OnInit {
 
   getUser() {
     return this.authService.getUser() != null;
+  }
+
+  onSearchSubmit(form: NgForm) {
+    console.log(form.value);
+    console.log(this.date);
+    this.restaurantService.getRestaurantsByParams(form.value).subscribe(
+      (data) => {
+        console.log(data.json());
+        this.restaurants = data.json();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
