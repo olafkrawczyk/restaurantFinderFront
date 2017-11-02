@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OwnerRoutingModule } from './owner-routing.module';
 import { NgModule } from '@angular/core';
@@ -9,6 +10,7 @@ import { RestaurantDetailsComponent } from './dashboard/restaurant-details/resta
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
     OwnerRoutingModule,
     ReactiveFormsModule

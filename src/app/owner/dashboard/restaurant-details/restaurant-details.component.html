@@ -20,23 +20,7 @@
     </div>
 
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-      <h3>Menu</h3>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Dish name</th>
-            <th>Description</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let menuItem of restaurant.menuItems">
-            <td>{{ menuItem.dishName }}</td>
-            <td>{{ menuItem.description }}</td>
-            <td>{{ menuItem.price | currency: "PLN" }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <app-restaurant-menu [menuItems]="restaurant.menuItems"></app-restaurant-menu>
     </div>
 
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">

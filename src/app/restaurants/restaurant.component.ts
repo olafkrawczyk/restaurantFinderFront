@@ -1,5 +1,7 @@
+import { RestaurantService } from './restaurant.service';
+import { Restaurant } from './../models/restaurant';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 
 
 @Component({
@@ -9,11 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantComponent implements OnInit {
 
+    id: number;
     date: any;
     people: any;
     time: any;
 
-    constructor( private activatedRout: ActivatedRoute) {
+    restaurant: Restaurant;
+
+    constructor( private activatedRout: ActivatedRoute, private restuarantService: RestaurantService) {
         this.date = new Date();
     }
 
@@ -22,6 +27,7 @@ export class RestaurantComponent implements OnInit {
             (params: Params) => {
                 console.log('params');
                 console.log(params);
+                this.id = params['id'];
             }
         );
         this.activatedRout.queryParams.subscribe(
@@ -33,7 +39,14 @@ export class RestaurantComponent implements OnInit {
                 console.log(params);
             }
         );
+        this.restuarantService.getRestaurantInfo(this.id).subscribe(
+            (data) => {
+                this.restaurant = data.json();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
     }
 
-    
 }

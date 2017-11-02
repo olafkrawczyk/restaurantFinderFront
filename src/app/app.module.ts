@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { HeaderComponent } from './header/header.component';
 import { RestaurantComponent } from './restaurants/restaurant.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RestaurantComponent } from './restaurants/restaurant.component';
     AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent, RestaurantComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,
