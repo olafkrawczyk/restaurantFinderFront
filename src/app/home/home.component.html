@@ -12,6 +12,7 @@
           <option value="2">2</option>
           <option value="4">4</option>
           <option value="6">6</option>
+          <option value="8">8</option>
         </select>
 
         <label for="city"> City</label>
@@ -25,7 +26,14 @@
         <div class="form-group">
           <ng-datepicker [(ngModel)]="date" name="date"></ng-datepicker>
         </div>
-        <input type="time" name="time" id="time" class="form-control" step="900" ngModel>
+        <select name="hour" id="hour" class="form-control" ngModel>
+            <option value="10:00">10:00</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+            <option value="18:00">18:00</option>
+            <option value="20:00">20:00</option>
+        </select>
 
         <label for="cuisine"> Cuisine</label>
         <select name="cuisine" class="form-control" ngModel>
