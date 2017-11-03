@@ -1,18 +1,17 @@
 <div class="container" *ngIf="restaurant">
     <div class="row">
 
-
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <img class="img-responsive" src="/assets/logo.png">
             <h2>{{ restaurant.name }}</h2>
             <p>
-
                 <span class="badge">{{restaurant.cuisine}}</span>
                 <br> Opening hours: {{ restaurant.openHour }} - {{ restaurant.closeHour }}
-            </p>
-            <p>{{ restaurant.description }}
-                <br> cheef description
                 <br>
+                <b>{{ restaurant.address.street }}</b>
+                <br> {{ restaurant.address.postalCode}} {{ restaurant.address.city }}
+                <br> {{ restaurant.email }}
+                <br> {{ restaurant.phoneNumber}}
             </p>
         </div>
 
@@ -52,15 +51,75 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-primary">Reserve</button>
+                <button type="submit" class="btn btn-primary">View tables</button>
             </form>
+            <div class="row tables-result">
 
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <b>Seats</b>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <b>Hour</b>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            2
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            11:00
+                        </div>
+
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <button type="button" class="btn btn-info">Book this table</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            2
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            11:00
+                        </div>
+
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <button type="button" class="btn btn-info">Book this table</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            2
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            11:00
+                        </div>
+
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <button type="button" class="btn btn-info">Book this table</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
 
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
             <app-restaurant-menu [menuItems]="restaurant.menuItems"></app-restaurant-menu>
         </div>
+
+
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <h3>Details</h3>
+            <p>{{ restaurant.description }} </p>
+        </div>
+
     </div>
 </div>
 
