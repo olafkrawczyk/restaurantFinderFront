@@ -1,3 +1,4 @@
+import { ReservationService } from './reservations/reservations.service';
 import { RestaurantService } from './restaurants/restaurant.service';
 import { OwnerModule } from './owner/owner.module';
 import { AuthService } from './auth/auth.service';
@@ -33,7 +34,7 @@ import { SharedModule } from './shared/shared.module';
     OwnerModule,
     NgDatepickerModule
   ],
-  providers: [AuthService, RestaurantService],
+  providers: [AuthService, RestaurantService, ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

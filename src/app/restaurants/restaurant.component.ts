@@ -1,3 +1,7 @@
+import { Reservation } from './../models/reservation.model';
+import { Table } from './../models/table.model';
+import { ReservationService } from './../reservations/reservations.service';
+import { NgForm } from '@angular/forms';
 import { RestaurantService } from './restaurant.service';
 import { Restaurant } from './../models/restaurant';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -12,13 +16,15 @@ import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 export class RestaurantComponent implements OnInit {
 
     id: number;
-    date: any;
+    date: Date;
     people: any;
-    time: any;
+    time: string;
 
     restaurant: Restaurant;
+    reservations: Reservation[];
 
-    constructor( private activatedRout: ActivatedRoute, private restuarantService: RestaurantService) {
+    constructor(private activatedRout: ActivatedRoute, private restuarantService: RestaurantService,
+                private reservationService: ReservationService) {
         this.date = new Date();
     }
 
@@ -47,6 +53,30 @@ export class RestaurantComponent implements OnInit {
                 console.log(error);
             }
         );
+    }
+
+    onTableCheckSubmit(form: NgForm) {
+        console.log(form.value);
+        let reservatonsTemp: Reservation[] = [];
+        const reservationDateTime = this.parseDateTime(this.date, this.time);
+        this.reservationService.getFreeSlots(reservationDateTime, this.restaurant.id, form.value['people']).subscribe(
+            (data) => {
+                reservatonsTemp = data.json();
+                reservatonsTemp.forEach(element => {
+                    element.reservationDate = new Date(element.reservationDate);
+                });
+                console.log(reservatonsTemp);
+                this.reservations = reservatonsTemp;
+            },
+            error => console.log(error)
+        );
+    }
+
+    parseDateTime(date, time) {
+        const hours = time.split(':')[0];
+        const minutes = time.split(':')[1];
+
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes);
     }
 
 }
