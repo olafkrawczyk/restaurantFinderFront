@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { EditRestaurantComponent } from './dashboard/edit-restaurant/edit-restaurant.component';
 import { RestaurantDetailsComponent } from './dashboard/restaurant-details/restaurant-details.component';
+import { ReservationsPendingComponent } from './dashboard/restaurant-details/reservations-pending/reservations-pending.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { RestaurantDetailsComponent } from './dashboard/restaurant-details/resta
     OwnerRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DashboardComponent, SidebarComponent, EditRestaurantComponent, RestaurantDetailsComponent]
+  declarations: [DashboardComponent, SidebarComponent, EditRestaurantComponent, RestaurantDetailsComponent, ReservationsPendingComponent]
 })
 export class OwnerModule { }

@@ -53,7 +53,7 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onAddTable(tableId, tableSeats) {
-    this.tables.push({id: null, restaurantTableId: tableId, seats: tableSeats});
+    this.tables.push({id: null, restaurantTableId: tableId, seats: tableSeats, restaurantId: -1});
   }
 
   onDeleteTable(index) {

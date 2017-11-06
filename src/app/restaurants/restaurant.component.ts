@@ -79,4 +79,12 @@ export class RestaurantComponent implements OnInit {
         return new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes);
     }
 
+    onBookClicked(reservation: Reservation) {
+        this.reservationService.makeReservation(reservation.reservationDate,
+                reservation.restaurantTable.restaurantId,
+                reservation.restaurantTable.id).subscribe(
+                (data) => console.log(data.json())
+            );
+    }
+
 }

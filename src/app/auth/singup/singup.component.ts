@@ -24,7 +24,8 @@ export class SingupComponent implements OnInit {
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       emailAddress: form.value.emailAddress,
-      password: form.value.password
+      password: form.value.password,
+      phoneNumber: form.value.phoneNumber
     };
     console.log(user);
     this.authService.signUpClient(user).subscribe(
