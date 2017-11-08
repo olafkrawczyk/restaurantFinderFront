@@ -10,10 +10,12 @@
       <br> Seats: {{ _reservation.restaurantTableTO.seats }}</p>
   </div>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <span class="label label-info">{{ _reservation.status }}</span>
+    <span class="label " [ngClass]="_reservation.status === 'ACCEPTED' ? 'label-success' : 'label-default'">{{ _reservation.status }}</span>
   </div>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <button type="button" class="btn btn-warning" (click)="onCancelReservation()">Cancel reservation</button>
+    <button type="button" class="btn btn-default" 
+            (click)="onCancelReservation()" 
+            [disabled]="_reservation.status === 'REJECTED' || _reservation.status === 'CANCELED'">Cancel reservation</button>
   </div>
 </div>
 

@@ -83,7 +83,7 @@ export class RestaurantComponent implements OnInit {
         this.reservationService.makeReservation(reservation.reservationDate,
                 reservation.restaurantTable.restaurantId,
                 reservation.restaurantTable.id).subscribe(
-                (data) => console.log(data.json())
+                (data) => console.log(data.text())
             );
     }
 
