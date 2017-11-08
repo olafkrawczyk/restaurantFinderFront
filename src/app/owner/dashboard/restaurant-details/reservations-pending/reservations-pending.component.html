@@ -20,10 +20,10 @@
       <td>{{ reservation.restaurantTableTO.seats }}</td>
       <td>{{ reservation.restaurantTableTO.restaurantTableId }}</td>
       <td>
-          <button type="button" class="btn btn-sm btn-block btn-success">Accept</button>
+          <button type="button" class="btn btn-sm btn-block btn-success" (click)="onAcceptReservation(reservation.id)">Accept</button>
       </td>
       <td>
-        <button type="button" class="btn btn-sm btn-block btn-danger">Cancel</button>
+        <button type="button" class="btn btn-sm btn-block btn-danger" (click)="onRejectReservation(reservation.id)">Reject</button>
       </td>
     </tr>
   </tbody>

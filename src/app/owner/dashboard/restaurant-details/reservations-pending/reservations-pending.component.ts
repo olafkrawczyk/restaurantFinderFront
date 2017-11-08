@@ -40,4 +40,24 @@ export class ReservationsPendingComponent implements OnInit {
     );
   }
 
+  onAcceptReservation(reservationId: number) {
+    this.reservationServie.acceptReservation(reservationId).subscribe(
+      (data) => {
+        console.log(data);
+        this.getPendingReservations();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  onRejectReservation(reservationId: number) {
+    this.reservationServie.rejectReservation(reservationId).subscribe(
+      (data) => {
+        console.log(data);
+        this.getPendingReservations();
+      },
+      (error) => console.log(error)
+    );
+  }
+
 }

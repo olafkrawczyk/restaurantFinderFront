@@ -28,4 +28,18 @@ export class ReservationService {
     getPendingReservations(restaurantId: number) {
         return this.http.get('http://localhost:8080/reservations/pendingReservations/' + restaurantId);
     }
+
+    acceptReservation(reservationId: number) {
+        const params = new URLSearchParams();
+        params.append('reservationId', reservationId.toString());
+
+        return this.http.post('http://localhost:8080/reservations/accept', params);
+    }
+
+    rejectReservation(reservationId: number) {
+        const params = new URLSearchParams();
+        params.append('reservationId', reservationId.toString());
+
+        return this.http.post('http://localhost:8080/reservations/reject', params);
+    }
 }
