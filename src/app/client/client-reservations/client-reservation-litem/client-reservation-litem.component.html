@@ -1,4 +1,4 @@
-<div class="row reservation-item">
+<div class="row reservation-item" *ngIf="_reservation;loading">
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
     <a style="cursor: pointer" (click)="navigateToRestaurant()">{{ _reservation.restaurant.name }}</a>
   </div>
@@ -10,9 +10,13 @@
       <br> Seats: {{ _reservation.restaurantTableTO.seats }}</p>
   </div>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <span class="label label-info">{{ reservation.status }}</span>
+    <span class="label label-info">{{ _reservation.status }}</span>
   </div>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <button type="button" class="btn btn-warning">Cancel reservation</button>
+    <button type="button" class="btn btn-warning" (click)="onCancelReservation()">Cancel reservation</button>
   </div>
 </div>
+
+<ng-template #loading>
+  <h3>Loading...</h3>
+<ng-template>

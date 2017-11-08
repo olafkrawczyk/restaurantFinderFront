@@ -1,3 +1,4 @@
+import { ReservationService } from './../../../reservations/reservations.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ClientReservationLitemComponent implements OnInit {
 
   _reservation;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private reservationService: ReservationService) { }
 
   @Input() set reservation(reservation) {
     reservation.reservationDate = new Date(reservation.reservationDate);
@@ -21,5 +22,9 @@ export class ClientReservationLitemComponent implements OnInit {
 
   navigateToRestaurant() {
     this.router.navigate(['/restaurant', this._reservation.restaurant.id]);
+  }
+
+  onCancelReservation() {
+    this.reservationService.cancelReservation(this._reservation.id);
   }
 }
