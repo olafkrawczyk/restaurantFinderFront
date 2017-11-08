@@ -1,0 +1,18 @@
+<div class="row reservation-item">
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <a style="cursor: pointer" (click)="navigateToRestaurant()">{{ _reservation.restaurant.name }}</a>
+  </div>
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    {{ _reservation.reservationDate.toLocaleString().slice(0, -3) }}
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <p href="#">Table: {{ _reservation.restaurantTableTO.restaurantTableId }}
+      <br> Seats: {{ _reservation.restaurantTableTO.seats }}</p>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <span class="label label-info">{{ reservation.status }}</span>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <button type="button" class="btn btn-warning">Cancel reservation</button>
+  </div>
+</div>

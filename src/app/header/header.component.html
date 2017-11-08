@@ -1,12 +1,21 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-        
+
       <a routerLink="/" class="navbar-brand">
         {{title}}
       </a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
+    <div *ngIf="getUser()">
+      <ul class="nav navbar-nav" *ngIf="!isOwner()">
+        <li><a style="cursor: pointer" routerLink="/client/reservations">Reservations</a></li>
+        <li><a style="cursor: pointer" routerLink="/client/profile">Profile</a></li>
+      </ul>
+      <ul class="nav navbar-nav" *ngIf="isOwner()">
+          <li><a style="cursor: pointer" routerLink="/dashboard">Dashboard</a></li>
+        </ul>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;">
       <li class="dropdown" ngbDropdown *ngIf="!authService.getUser()">
         <a style="cursor: pointer;" class="dropdown-toggle" role="button" ngbDropdownToggle>Client
           <span class="caret"></span>
@@ -35,9 +44,9 @@
         </ul>
       </li>
     </ul>
-    <div class="nav nav-navbar pull-right" *ngIf="authService.getUser()">
+    <div class="nav nav-navbar pull-right" *ngIf="getUser()">
       <button type="button" class="btn btn-default navbar-btn pull-right" (click)="onLogout()">Logout</button>
-      <p class="navbar-text pull-right">Signed in as {{ authService.getUser().firstName }}</p>
+      <p class="navbar-text pull-right">Signed in as {{ getUser().firstName }}</p>
     </div>
   </div>
 </nav>

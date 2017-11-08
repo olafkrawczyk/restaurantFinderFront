@@ -1,0 +1,6 @@
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
+  <h2>Your reservations </h2>
+  <div *ngFor="let reservation of reservations">
+      <app-client-reservation-litem [reservation]="reservation"></app-client-reservation-litem>
+  </div>
+</div>

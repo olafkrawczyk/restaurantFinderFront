@@ -17,11 +17,14 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { HeaderComponent } from './header/header.component';
 import { RestaurantComponent } from './restaurants/restaurant.component';
 import { SharedModule } from './shared/shared.module';
+import { ClientReservationsComponent } from './client/client-reservations/client-reservations.component';
+import { ClientComponent } from './client/client.component';
+import { ClientReservationLitemComponent } from './client/client-reservations/client-reservation-litem/client-reservation-litem.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent, RestaurantComponent
+    AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent, RestaurantComponent, ClientReservationsComponent, ClientComponent, ClientReservationLitemComponent
   ],
   imports: [
     SharedModule,

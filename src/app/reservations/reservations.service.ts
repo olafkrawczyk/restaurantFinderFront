@@ -1,6 +1,6 @@
 import { AuthService } from './../auth/auth.service';
 import { Reservation } from './../models/reservation.model';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, RequestOptionsArgs } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 
@@ -42,4 +42,9 @@ export class ReservationService {
 
         return this.http.post('http://localhost:8080/reservations/reject', params);
     }
+
+    getClientReservations(clientId: number) {
+        return this.http.get('http://localhost:8080/reservations/client/' + clientId.toString());
+    }
 }
+

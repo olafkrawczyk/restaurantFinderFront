@@ -18,4 +18,11 @@ export class HeaderComponent implements OnInit {
     this.authService.logoutUser();
     this.router.navigate(['']);
   }
+
+  isOwner() {
+    return this.authService.isOwner();
+  }
+  getUser() {
+    return this.authService.getUser();
+  }
 }
