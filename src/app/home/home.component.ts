@@ -1,3 +1,4 @@
+import { HelperRestService } from './../shared/helper.rest.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { RestaurantService } from './../restaurants/restaurant.service';
@@ -16,12 +17,27 @@ export class HomeComponent implements OnInit {
   time: string;
   restaurants: Restaurant[];
 
+  cuisines;
+  cities;
+
   constructor(private authService: AuthService, private restaurantService: RestaurantService,
-              private router: Router) {
+    private router: Router, private helperService: HelperRestService) {
     this.date = new Date();
   }
 
   ngOnInit() {
+    this.helperService.getCuisines().subscribe(
+      (data) => {
+        this.cuisines = data.json();
+      },
+      error => console.log(error)
+    );
+    this.helperService.getCities().subscribe(
+      (data) => {
+        this.cities = data.json();
+      },
+      (error) => console.log(error)
+    );
   }
 
   getUser() {
@@ -44,6 +60,6 @@ export class HomeComponent implements OnInit {
   }
 
   onBookRestaurantClicked(id: number) {
-    this.router.navigate(['/restaurant/', id], {queryParams : {people: this.people, date: this.date, time: this.time}});
+    this.router.navigate(['/restaurant/', id], { queryParams: { people: this.people, date: this.date, time: this.time } });
   }
 }

@@ -16,7 +16,7 @@
           <div class="form-group">
             <label for="cuisine" class="col-sm-2">Cuisine</label>
             <select name="cuisine" id="cuisine" class="form-control" formControlName="cuisine">
-              <option *ngFor="let cuisine of cuisines" [value]="cuisine">{{cuisine}}</option>
+              <option *ngFor="let cuisine of cuisines" [value]="cuisine[0]">{{cuisine[1]}}</option>
             </select>
           </div>
           <div class="form-group">

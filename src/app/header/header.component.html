@@ -9,7 +9,7 @@
     <div *ngIf="getUser()">
       <ul class="nav navbar-nav" *ngIf="!isOwner()">
         <li><a style="cursor: pointer" routerLink="/client/reservations">Reservations</a></li>
-        <li><a style="cursor: pointer" routerLink="/client/profile">Profile</a></li>
+        <li><a style="cursor: pointer" routerLink="/client/profile">My account</a></li>
       </ul>
       <ul class="nav navbar-nav" *ngIf="isOwner()">
           <li><a style="cursor: pointer" routerLink="/dashboard">Dashboard</a></li>

@@ -1,3 +1,4 @@
+import { HelperRestService } from './../../../shared/helper.rest.service';
 import { MenuItem } from './../../../models/menu-item.model';
 import { RestaurantService } from './../../../restaurants/restaurant.service';
 import { Table } from './../../../models/table.model';
@@ -11,14 +12,17 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./edit-restaurant.component.css']
 })
 export class EditRestaurantComponent implements OnInit {
-  cuisines = ['ITALIAN', 'THAI', 'Japanese', 'Fast Food'];
+  cuisines = [];
   tables: Table[] = [];
   menu: MenuItem[] = [];
   restaurantForm: FormGroup;
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService, private helperService: HelperRestService) { }
 
   ngOnInit() {
+    this.helperService.getCuisines().subscribe(
+      data => this.cuisines = data.json()
+    );
     this.restaurantForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'cuisine': new FormControl(this.cuisines[0]),

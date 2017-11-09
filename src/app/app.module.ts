@@ -1,3 +1,4 @@
+import { HelperRestService } from './shared/helper.rest.service';
 import { ReservationService } from './reservations/reservations.service';
 import { RestaurantService } from './restaurants/restaurant.service';
 import { OwnerModule } from './owner/owner.module';
@@ -24,7 +25,12 @@ import { ClientReservationLitemComponent } from './client/client-reservations/cl
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, AppDropdownDirective, HeaderComponent, RestaurantComponent, ClientReservationsComponent, ClientComponent, ClientReservationLitemComponent
+    AppComponent,
+    HomeComponent,
+    AppDropdownDirective,
+    HeaderComponent,
+    RestaurantComponent,
+    ClientReservationsComponent, ClientComponent, ClientReservationLitemComponent
   ],
   imports: [
     SharedModule,
@@ -37,7 +43,7 @@ import { ClientReservationLitemComponent } from './client/client-reservations/cl
     OwnerModule,
     NgDatepickerModule
   ],
-  providers: [AuthService, RestaurantService, ReservationService],
+  providers: [AuthService, RestaurantService, ReservationService, HelperRestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

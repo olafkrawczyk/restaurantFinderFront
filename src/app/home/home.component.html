@@ -17,9 +17,7 @@
 
         <label for="city"> City</label>
         <select name="city" class="form-control" ngModel>
-          <option value="krakow">Kraków</option>
-          <option value="katowice">Katowice</option>
-          <option value="wroclaw">Wrocław</option>
+          <option value="{{ city }}" *ngFor="let city of cities">{{ city }}</option>
         </select>
 
         <label for="date"> Date</label>
@@ -37,10 +35,8 @@
 
         <label for="cuisine"> Cuisine</label>
         <select name="cuisine" class="form-control" ngModel>
-          <option value="all">All</option>
-          <option value="italian">Italian</option>
-          <option value="japanese">Japanese</option>
-          <option value="fast-food">Fast food</option>
+          <option value="">All</option>
+          <option value="{{ cuisine[0] }}" *ngFor="let cuisine of cuisines">{{ cuisine[1] }}</option>
         </select>
 
         <div class="btn-group">
