@@ -1,7 +1,7 @@
 <div class="container" *ngIf="restaurant; else loadingInfo">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <button type="button" class="btn btn-primary">Edit</button>
+      <button type="button" class="btn btn-primary" (click)="onEditClicked()">Edit</button>
     </div>
   </div>
   <div class="row">

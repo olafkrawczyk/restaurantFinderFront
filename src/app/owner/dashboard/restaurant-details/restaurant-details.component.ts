@@ -1,7 +1,7 @@
 import { Restaurant } from './../../../models/restaurant';
 import { RestaurantService } from './../../../restaurants/restaurant.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -13,7 +13,7 @@ export class RestaurantDetailsComponent implements OnInit {
   restaurantId: string;
   restaurant: Restaurant;
 
-  constructor(private activatedRoute: ActivatedRoute, private restaurantService: RestaurantService) { }
+  constructor(private activatedRoute: ActivatedRoute, private restaurantService: RestaurantService, private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(
@@ -29,6 +29,10 @@ export class RestaurantDetailsComponent implements OnInit {
       (data) => this.restaurant = data.json(),
       (error) => console.log(error)
     );
+  }
+
+  onEditClicked() {
+    this.router.navigate(['/dashboard/edit', this.restaurantId]);
   }
 
 }

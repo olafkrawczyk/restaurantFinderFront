@@ -59,6 +59,12 @@
       To start please fill form above ...
     </div>
 
+    <div class="alert alert-info" *ngIf="restaurants && restaurants.length == 0">
+      <b>Sorry...</b>
+      <p>We could not find any restaurants matching your request<br>
+      Please change date or guests number and try again</p>
+    </div>
+
 
     <div class="row" *ngFor="let restaurant of restaurants">
       <div class="panel panel-default">

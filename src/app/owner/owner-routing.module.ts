@@ -7,7 +7,8 @@ import { RouterModule, Router, Routes } from '@angular/router';
 
 const authRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent, canActivate: [OwnerGuard], children:
-        [{path: 'edit', component: EditRestaurantComponent},
+        [{path: 'edit/:id', component: EditRestaurantComponent},
+         {path: 'edit', component: EditRestaurantComponent},
          {path: 'details/:id', component: RestaurantDetailsComponent}]}
 ];
 

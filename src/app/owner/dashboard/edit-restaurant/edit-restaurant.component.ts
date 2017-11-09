@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { HelperRestService } from './../../../shared/helper.rest.service';
 import { MenuItem } from './../../../models/menu-item.model';
 import { RestaurantService } from './../../../restaurants/restaurant.service';
@@ -12,34 +13,95 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./edit-restaurant.component.css']
 })
 export class EditRestaurantComponent implements OnInit {
+  id = null;
+  restaurant = null;
+  editMode = false;
   cuisines = [];
   tables: Table[] = [];
   menu: MenuItem[] = [];
   restaurantForm: FormGroup;
 
-  constructor(private restaurantService: RestaurantService, private helperService: HelperRestService) { }
+  constructor(private restaurantService: RestaurantService,
+              private helperService: HelperRestService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.initForm();
+
+    this.activatedRoute.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.editMode = params['id'] != null;
+        if (this.editMode) {
+          this.loadRestaurant();
+        }
+      }
+    );
+
     this.helperService.getCuisines().subscribe(
       data => this.cuisines = data.json()
     );
+  }
+
+  initForm() {
+    let name = '';
+    let photo = '';
+    let description = '';
+    let cuisine = this.cuisines[0];
+    let openHour = '';
+    let closeHour = '';
+    let phone = '';
+    let email = '';
+    let address = {
+      street: '',
+      city: '',
+      postalCode: ''
+    };
+
+    if (this.editMode) {
+      name = this.restaurant.name;
+      photo = this.restaurant.photo;
+      description = this.restaurant.description;
+      cuisine = this.restaurant.cuisine;
+      openHour = this.restaurant.openHour;
+      closeHour = this.restaurant.closeHour;
+      phone = this.restaurant.phone;
+      email = this.restaurant.email;
+      address = this.restaurant.address;
+      this.menu = this.restaurant.menuItems;
+      this.tables = this.restaurant.tables;
+    }
+
+    console.log('Initialization....');
+
     this.restaurantForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'cuisine': new FormControl(this.cuisines[0]),
-      'photo': new FormControl(null),
-      'description': new FormControl(null),
-      'openHour': new FormControl(null),
-      'closeHour': new FormControl(null),
-      'phone': new FormControl(null),
-      'email': new FormControl(null),
+      'name': new FormControl(name, Validators.required),
+      'cuisine': new FormControl(cuisine),
+      'photo': new FormControl(photo),
+      'description': new FormControl(description),
+      'openHour': new FormControl(openHour),
+      'closeHour': new FormControl(closeHour),
+      'phone': new FormControl(phone),
+      'email': new FormControl(email),
       'address' : new FormGroup({
-        'street': new FormControl(null),
-        'city': new FormControl(null),
-        'postalCode': new FormControl(null)
+        'street': new FormControl(address.street),
+        'city': new FormControl(address.city),
+        'postalCode': new FormControl(address.postalCode)
       })
     });
   }
 
+  loadRestaurant() {
+    this.restaurantService.getRestaurantInfo(this.id).subscribe(
+      (data) => {
+        this.restaurant = data.json();
+        console.log(this.restaurant);
+        this.initForm();
+      },
+      error => console.log(error)
+    );
+  }
   onSubmit() {
     console.log('Submited!');
     this.restaurantForm.value.tables = this.tables;
