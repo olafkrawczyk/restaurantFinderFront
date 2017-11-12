@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HelperRestService } from './../../../shared/helper.rest.service';
 import { MenuItem } from './../../../models/menu-item.model';
 import { RestaurantService } from './../../../restaurants/restaurant.service';
@@ -22,8 +22,9 @@ export class EditRestaurantComponent implements OnInit {
   restaurantForm: FormGroup;
 
   constructor(private restaurantService: RestaurantService,
-              private helperService: HelperRestService,
-              private activatedRoute: ActivatedRoute) { }
+    private helperService: HelperRestService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -84,7 +85,7 @@ export class EditRestaurantComponent implements OnInit {
       'closeHour': new FormControl(closeHour),
       'phone': new FormControl(phone),
       'email': new FormControl(email),
-      'address' : new FormGroup({
+      'address': new FormGroup({
         'street': new FormControl(address.street),
         'city': new FormControl(address.city),
         'postalCode': new FormControl(address.postalCode)
@@ -103,23 +104,41 @@ export class EditRestaurantComponent implements OnInit {
     );
   }
   onSubmit() {
-    console.log('Submited!');
     this.restaurantForm.value.tables = this.tables;
     this.restaurantForm.value.menuItems = this.menu;
+
+    let restaurantReturnId = -1;
     console.log(this.restaurantForm.value);
-    this.restaurantService.saveNewRestaurant(this.restaurantForm.value).subscribe(
-      (respose) => {
-        console.log('Success!!!');
-        this.restaurantService.refreshRestaurantsList();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+    if (this.editMode) {
+      this.restaurantForm.value.id = this.restaurant.id;
+      this.restaurantService.updateRestaurant(this.restaurant.id, this.restaurantForm.value)
+        .subscribe(
+        (data) => {
+          console.log(data.text());
+          restaurantReturnId = this.restaurant.id;
+          this.router.navigate(['/dashboard', 'details', restaurantReturnId]);
+        },
+        error => console.log(error)
+        );
+    } else {
+      this.restaurantService.saveNewRestaurant(this.restaurantForm.value).subscribe(
+        (response) => {
+          console.log('Success!!!');
+          this.restaurantService.refreshRestaurantsList();
+          restaurantReturnId = +response.text();
+          this.router.navigate(['/dashboard', 'details', restaurantReturnId]);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+
   }
 
   onAddTable(tableId, tableSeats) {
-    this.tables.push({id: null, restaurantTableId: tableId, seats: tableSeats, restaurantId: -1});
+    this.tables.push({ id: null, restaurantTableId: tableId, seats: tableSeats, restaurantId: -1 });
   }
 
   onDeleteTable(index) {
@@ -127,7 +146,7 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onAddDish(name: string, price: number, description: string) {
-    this.menu.push({dishName: name, price: price, description: description});
+    this.menu.push({ dishName: name, price: price, description: description });
   }
 
   onDeleteDish(index) {

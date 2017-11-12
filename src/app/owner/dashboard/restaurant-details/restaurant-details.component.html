@@ -13,8 +13,11 @@
       <h2>{{ restaurant.name }}</h2>
       <p>
         <span class="label label-default">{{ restaurant.cuisine }}</span>
+        <br> {{ restaurant.openHour }} - {{ restaurant.closeHour }}
         <br> {{ restaurant.address.street }}
         <br> {{ restaurant.address.postalCode }} {{ restaurant.address.city}}
+        <br> {{ restaurant.phone }}
+        <br> {{ restaurant.email }}
       </p>
       <p>{{ restaurant.description }}</p>
     </div>

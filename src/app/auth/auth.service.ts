@@ -10,7 +10,7 @@ export class AuthService {
     constructor(private router: Router, private http: Http) { }
 
     signUpClient(user: User) {
-        return this.http.post('http://localhost:8080/clients', user);
+        return this.http.post('http://localhost:8080/clients/new', user);
     }
 
     signInClient(email: string, password: string) {

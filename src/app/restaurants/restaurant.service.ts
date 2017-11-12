@@ -43,4 +43,8 @@ export class RestaurantService {
     getRestaurantsByParams(data) {
         return this.http.post('http://localhost:8080/restaurants/findByParameters', data);
     }
+
+    updateRestaurant(id: number, data) {
+        return this.http.post('http://localhost:8080/restaurants/' + id, data);
+    }
 }

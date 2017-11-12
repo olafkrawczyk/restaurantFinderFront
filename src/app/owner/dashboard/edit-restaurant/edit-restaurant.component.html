@@ -1,4 +1,4 @@
-<h3>New restaurant</h3>
+<h3>{{ editMode ? restaurant.name : 'New restaurant'}}</h3>
 <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
   <button type="submit" class="btn btn-success">
     <span class="glyphicon glyphicon-floppy-disk"></span> Save</button>

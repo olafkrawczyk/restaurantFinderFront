@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
     console.log(form.value);
     this.people = form.value['people'];
     this.time = form.value['time'];
+    this.date.setHours(+this.time.slice(0, 2), +this.time.slice(3, 5));
     this.restaurantService.getRestaurantsByParams(form.value).subscribe(
       (data) => {
         console.log(data.json());

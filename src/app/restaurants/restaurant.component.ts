@@ -48,6 +48,7 @@ export class RestaurantComponent implements OnInit {
         this.restuarantService.getRestaurantInfo(this.id).subscribe(
             (data) => {
                 this.restaurant = data.json();
+                console.log(data.json());
             },
             (error) => {
                 console.log(error);
