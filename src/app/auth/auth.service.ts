@@ -20,7 +20,6 @@ export class AuthService {
         const savedToken = localStorage.getItem(TOKEN_NAME);
         if (savedToken != null) {
             this.setToken(savedToken);
-            this.headers.append(AUTH_HEADER_NAME, this.tokenRaw);
             this.loginUserViaToken();
         }
      }
@@ -68,6 +67,7 @@ export class AuthService {
         localStorage.setItem(TOKEN_NAME, inputToken);
         this.token = token;
         this.tokenRaw = inputToken;
+        this.headers.set(AUTH_HEADER_NAME, this.tokenRaw);
     }
 
     removeToken() {
@@ -100,7 +100,6 @@ export class AuthService {
         this.http.get('http://localhost:8080/clients/getByEmail', {params: params, headers: this.headers }).subscribe(
             (data) => {
                 this.user = data.json();
-                this.router.navigate(['/']);
             },
             error => console.log(error)
         );
@@ -112,5 +111,9 @@ export class AuthService {
         } else {
             this.getLoggedClientData(this.token['sub']);
         }
+    }
+
+    getHeaders(): Headers {
+        return this.headers;
     }
 }
