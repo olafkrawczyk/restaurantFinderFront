@@ -24,6 +24,7 @@ export class SinginComponent implements OnInit {
         const token = response.headers.get(AUTH_HEADER_NAME);
         this.authService.setToken(token);
         this.authService.loginUserViaToken();
+        this.router.navigate(['/']);
       },
       (error) => {
         console.log(error);

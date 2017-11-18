@@ -18,7 +18,7 @@ export class ClientReservationsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.reservationSubscription = this.reservationService.clientReservations.subscribe(
-      (data) => this.reservations = data
+      (data) => this.reservations = data.reverse()
     );
     this.reservationService.getClientReservations();
   }
