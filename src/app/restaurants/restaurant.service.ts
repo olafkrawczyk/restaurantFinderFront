@@ -19,12 +19,13 @@ export class RestaurantService {
     }
 
     saveNewRestaurant(requestBody) {
-        return this.http.post('http://localhost:8080/restaurants/new', requestBody);
+        return this.http.post('http://localhost:8080/restaurants/new', requestBody, {headers: this.authService.getHeaders()});
     }
 
     refreshRestaurantsList() {
        const owner = this.authService.getUser();
-       this.http.get('http://localhost:8080/owners/' + owner.emailAddress + '/restaurants/stubs').subscribe(
+       this.http.get('http://localhost:8080/owners/' + owner.emailAddress + '/restaurants/stubs',
+       {headers: this.authService.getHeaders()}).subscribe(
            (data) => {
                this.restaurantsStubsList = data.json();
                this.restaurantsListChanged.next(this.restaurantsStubsList.slice());
@@ -37,14 +38,14 @@ export class RestaurantService {
     }
 
     getRestaurantInfo(id: number) {
-        return this.http.get('http://localhost:8080/restaurants/' + id);
+        return this.http.get('http://localhost:8080/restaurants/' + id, {headers: this.authService.getHeaders()});
     }
 
     getRestaurantsByParams(data) {
-        return this.http.post('http://localhost:8080/restaurants/findByParameters', data);
+        return this.http.post('http://localhost:8080/restaurants/findByParameters', data, {headers: this.authService.getHeaders()});
     }
 
     updateRestaurant(id: number, data) {
-        return this.http.post('http://localhost:8080/restaurants/' + id, data);
+        return this.http.post('http://localhost:8080/restaurants/' + id, data, {headers: this.authService.getHeaders()});
     }
 }

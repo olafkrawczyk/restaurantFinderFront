@@ -33,10 +33,10 @@ import { ClientReservationLitemComponent } from './client/client-reservations/cl
     ClientReservationsComponent, ClientComponent, ClientReservationLitemComponent
   ],
   imports: [
+    AuthModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),

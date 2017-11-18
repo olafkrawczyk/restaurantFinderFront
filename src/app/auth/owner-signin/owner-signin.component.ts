@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../auth.service';
+import { AuthService, AUTH_HEADER_NAME } from './../auth.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,10 +19,9 @@ export class OwnerSigninComponent implements OnInit {
   onSingIn(form: NgForm) {
     this.authService.signInOwner(form.value.emailAddress, form.value.password).subscribe(
       (response) => {
-        this.authService.setUser(response.json());
-        this.authService.setOwner();
-        console.log(this.authService.getUser());
-        this.router.navigate(['dashboard']);
+        const token = response.headers.get(AUTH_HEADER_NAME);
+        this.authService.setToken(token);
+        this.authService.loginUserViaToken();
       },
       (error: Response) => {
         console.log(error);

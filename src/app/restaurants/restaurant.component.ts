@@ -41,7 +41,7 @@ export class RestaurantComponent implements OnInit {
                 console.log('query params');
                 this.time = params['time'];
                 this.people = params['people'];
-                this.date = new Date(params['date']);
+                this.date = params['date'] ? new Date(params['date']) : new Date();
                 console.log(params);
             }
         );
