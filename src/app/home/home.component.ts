@@ -5,6 +5,7 @@ import { RestaurantService } from './../restaurants/restaurant.service';
 import { Restaurant } from './../models/restaurant';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { DatepickerOptions } from 'ng2-datepicker';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  options: DatepickerOptions = {
+    minYear: new Date().getFullYear(),
+    maxYear: new Date().getFullYear() + 1
+  };
+
   date: Date;
   people: string;
   time: string;
