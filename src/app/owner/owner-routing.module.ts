@@ -1,3 +1,4 @@
+import { ReservationsListComponent } from './dashboard/reservations-list/reservations-list.component';
 import { RestaurantDetailsComponent } from './dashboard/restaurant-details/restaurant-details.component';
 import { OwnerGuard } from './../auth/guards/owner-guard.service';
 import { EditRestaurantComponent } from './dashboard/edit-restaurant/edit-restaurant.component';
@@ -9,7 +10,8 @@ const authRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent, canActivate: [OwnerGuard], children:
         [{path: 'edit/:id', component: EditRestaurantComponent},
          {path: 'edit', component: EditRestaurantComponent},
-         {path: 'details/:id', component: RestaurantDetailsComponent}]}
+         {path: 'details/:id', component: RestaurantDetailsComponent},
+         {path: 'reservations/:id', component: ReservationsListComponent}]}
 ];
 
 @NgModule({

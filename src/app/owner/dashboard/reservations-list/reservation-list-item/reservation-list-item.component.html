@@ -1,0 +1,19 @@
+<tr *ngIf="reservation;loading">
+  <td>{{ reservation.reservationDate.toLocaleDateString() }}</td>
+  <td>{{ reservation.reservationDate.toLocaleTimeString().slice(0, 5) }}</td>
+  <td>{{ reservation.client.firstName + ' ' + reservation.client.lastName }}</td>
+  <td>{{ reservation.client.phoneNumber }}</td>
+  <td>{{ reservation.restaurantTableTO.seats }}</td>
+  <td>{{ reservation.restaurantTableTO.restaurantTableId }}</td>
+  <td>
+    <button type="button" class="btn btn-sm btn-block btn-success" (click)="onAcceptReservation(reservation.id)">Accept</button>
+  </td>
+  <td>
+    <button type="button" class="btn btn-sm btn-block btn-danger" (click)="onRejectReservation(reservation.id)">Reject</button>
+  </td>
+</tr>
+
+
+<ng-template #loading>
+  <h3>Loading...</h3>
+<ng-template>

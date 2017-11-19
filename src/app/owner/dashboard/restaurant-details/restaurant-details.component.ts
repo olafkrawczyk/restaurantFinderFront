@@ -35,4 +35,8 @@ export class RestaurantDetailsComponent implements OnInit {
     this.router.navigate(['/dashboard/edit', this.restaurantId]);
   }
 
+  onReservations() {
+    this.router.navigate(['/dashboard/reservations', this.restaurantId]);
+  }
+  
 }
