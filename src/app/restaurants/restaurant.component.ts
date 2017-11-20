@@ -1,10 +1,11 @@
+import { AuthService } from './../auth/auth.service';
 import { Reservation } from './../models/reservation.model';
 import { Table } from './../models/table.model';
 import { ReservationService } from './../reservations/reservations.service';
 import { NgForm } from '@angular/forms';
 import { RestaurantService } from './restaurant.service';
 import { Restaurant } from './../models/restaurant';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 
 
@@ -24,7 +25,7 @@ export class RestaurantComponent implements OnInit {
     reservations: Reservation[];
 
     constructor(private activatedRout: ActivatedRoute, private restuarantService: RestaurantService,
-                private reservationService: ReservationService) {
+                private reservationService: ReservationService, public authService: AuthService, private router: Router) {
         this.date = new Date();
     }
 
@@ -84,7 +85,7 @@ export class RestaurantComponent implements OnInit {
         this.reservationService.makeReservation(reservation.reservationDate,
                 reservation.restaurantTable.restaurantId,
                 reservation.restaurantTable.id).subscribe(
-                (data) => console.log(data.text())
+                (data) => this.router.navigate(['/client', 'reservations'])
             );
     }
 
