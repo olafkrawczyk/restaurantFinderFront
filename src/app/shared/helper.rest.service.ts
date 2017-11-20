@@ -5,7 +5,7 @@ import { baseURL } from '../app.component';
 @Injectable()
 export class HelperRestService {
 
-    backendURL = baseURLseURL;
+    backendURL = baseURL;
 
     constructor(private http: Http) { }
 
