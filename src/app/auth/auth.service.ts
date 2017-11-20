@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import { Http, RequestOptionsArgs, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import { baseURL } from '../app.component';
 
 export const AUTH_HEADER_NAME = 'Authorization';
 export const TOKEN_NAME = 'tableRsvToken';
@@ -25,19 +26,19 @@ export class AuthService {
      }
 
     signUpClient(user: User) {
-        return this.http.post('http://localhost:8080/clients/new', user);
+        return this.http.post( baseURL + '/clients/new', user);
     }
 
     signInClient(email: string, password: string) {
-        return this.http.post('http://localhost:8080/login', {username: email, password: password});
+        return this.http.post(baseURL + '/login', {username: email, password: password});
     }
 
     signUpOwner(user: User) {
-        return this.http.post('http://localhost:8080/owners/new', user);
+        return this.http.post(baseURL + '/owners/new', user);
     }
 
     signInOwner(email: string, password: string) {
-        return this.http.post('http://localhost:8080/owners/login', {username: email, password: password});
+        return this.http.post(baseURL + '/owners/login', {username: email, password: password});
     }
 
     getUser() {
@@ -81,7 +82,7 @@ export class AuthService {
         let params = new URLSearchParams();
         params.append('email', email);
         console.log(params);
-        this.http.get('http://localhost:8080/owners/getByEmail', {params: params, headers: this.headers }).subscribe(
+        this.http.get(baseURL + '/owners/getByEmail', {params: params, headers: this.headers }).subscribe(
             (data) => {
                 this.user = data.json();
                 this.setOwner();
@@ -97,7 +98,7 @@ export class AuthService {
         params.append('email', email);
         console.log(this.headers);
         console.log(params);
-        this.http.get('http://localhost:8080/clients/getByEmail', {params: params, headers: this.headers }).subscribe(
+        this.http.get(baseURL + '/clients/getByEmail', {params: params, headers: this.headers }).subscribe(
             (data) => {
                 this.user = data.json();
             },

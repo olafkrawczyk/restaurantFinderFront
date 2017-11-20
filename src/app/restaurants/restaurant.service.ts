@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import { baseURL } from '../app.component';
 
 @Injectable()
 export class RestaurantService {
@@ -19,12 +20,12 @@ export class RestaurantService {
     }
 
     saveNewRestaurant(requestBody) {
-        return this.http.post('http://localhost:8080/restaurants/new', requestBody, {headers: this.authService.getHeaders()});
+        return this.http.post(baseURL + '/restaurants/new', requestBody, {headers: this.authService.getHeaders()});
     }
 
     refreshRestaurantsList() {
        const owner = this.authService.getUser();
-       this.http.get('http://localhost:8080/owners/' + owner.emailAddress + '/restaurants/stubs',
+       this.http.get(baseURL + '/owners/' + owner.emailAddress + '/restaurants/stubs',
        {headers: this.authService.getHeaders()}).subscribe(
            (data) => {
                this.restaurantsStubsList = data.json();
@@ -38,14 +39,14 @@ export class RestaurantService {
     }
 
     getRestaurantInfo(id: number) {
-        return this.http.get('http://localhost:8080/restaurants/' + id, {headers: this.authService.getHeaders()});
+        return this.http.get(baseURL + '/restaurants/' + id, {headers: this.authService.getHeaders()});
     }
 
     getRestaurantsByParams(data) {
-        return this.http.post('http://localhost:8080/restaurants/findByParameters', data, {headers: this.authService.getHeaders()});
+        return this.http.post(baseURL + '/restaurants/findByParameters', data, {headers: this.authService.getHeaders()});
     }
 
     updateRestaurant(id: number, data) {
-        return this.http.post('http://localhost:8080/restaurants/' + id, data, {headers: this.authService.getHeaders()});
+        return this.http.post(baseURL + '/restaurants/' + id, data, {headers: this.authService.getHeaders()});
     }
 }

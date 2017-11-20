@@ -8,6 +8,9 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.css'],
   providers: [NgbDropdownConfig]
 })
+
+export const baseURL = 'http://localhost:8080';
+
 export class AppComponent {
   title = 'TableReserv';
 

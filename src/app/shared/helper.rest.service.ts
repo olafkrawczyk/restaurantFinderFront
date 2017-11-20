@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { baseURL } from '../app.component';
 
 @Injectable()
 export class HelperRestService {
 
-    backendURL = 'http://localhost:8080';
+    backendURL = baseURLseURL;
 
     constructor(private http: Http) { }
 
