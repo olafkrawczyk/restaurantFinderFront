@@ -27,11 +27,11 @@
         <td>{{ reservation.restaurantTableTO.restaurantTableId }}</td>
         <td>{{ reservation.status }} </td>
         <td>
-            <button type="button" [disabled]="reservation.status == 'ACCEPTED' || reservation.status == 'CANCELED' || reservation.status == 'OBSOLETE'" 
+            <button type="button" [disabled]="reservation.status == 'ACCEPTED' || reservation.status == 'CANCELED' || reservation.status == 'CLOSED'" 
             class="btn btn-sm btn-block btn-success" (click)="onAcceptReservation(reservation.id)">Accept</button>
         </td>
         <td>
-          <button type="button" [disabled]="reservation.status == 'REJECTED' || reservation.status == 'CANCELED' || reservation.status == 'OBSOLETE'"
+          <button type="button" [disabled]="reservation.status == 'REJECTED' || reservation.status == 'CANCELED' || reservation.status == 'CLOSED'"
           class="btn btn-sm btn-block btn-danger" (click)="onRejectReservation(reservation.id)">Reject</button>
         </td>
       </tr>

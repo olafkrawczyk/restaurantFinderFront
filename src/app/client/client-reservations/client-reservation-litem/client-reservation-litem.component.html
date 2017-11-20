@@ -15,7 +15,7 @@
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
     <button type="button" class="btn btn-default" 
             (click)="onCancelReservation()" 
-            [disabled]="_reservation.status === 'REJECTED' || _reservation.status === 'CANCELED' || _reservation.status === 'OBSOLETE'">Cancel reservation</button>
+            [disabled]="_reservation.status === 'REJECTED' || _reservation.status === 'CANCELED' || _reservation.status === 'CLOSED'">Cancel reservation</button>
   </div>
 </div>
 
