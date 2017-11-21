@@ -14,5 +14,8 @@
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
+    <div class="alert alert-warning" style="margin-top: 10px;" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
   </div>
 </div>
