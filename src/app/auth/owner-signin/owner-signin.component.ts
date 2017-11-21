@@ -25,7 +25,7 @@ export class OwnerSigninComponent implements OnInit {
       },
       (error: Response) => {
         console.log(error);
-        this.errorMessage = 'Could not find user with gievn email address';
+        this.errorMessage = 'Login error. Please check your credentials. \nIf you don\'t have account create one';
       }
     );
   }
