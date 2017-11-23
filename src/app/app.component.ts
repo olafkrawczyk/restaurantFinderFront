@@ -1,4 +1,3 @@
-import { AuthService } from './auth/auth.service';
 import { Component } from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,7 +12,7 @@ export const baseURL = 'https://tablersv.herokuapp.com';
 export class AppComponent {
   title = 'TableReserv';
 
-  constructor(config: NgbDropdownConfig, private authService: AuthService) {
+  constructor(config: NgbDropdownConfig) {
     config.placement = 'bottom-right';
   }
 }
