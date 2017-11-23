@@ -13,6 +13,8 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class SinginComponent implements OnInit {
 
+  errorMessage;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class SinginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.errorMessage = 'Login error. Please check your credentials. If you don\'t have account create one';
       }
     );
   }

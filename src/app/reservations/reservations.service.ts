@@ -3,6 +3,7 @@ import { Reservation } from './../models/reservation.model';
 import { Http, URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { baseURL } from '../app.component';
 
 
 @Injectable()
@@ -15,7 +16,7 @@ export class ReservationService {
 
     getRestaurantReservations(restaurantId) {
 
-        this.http.get('http://localhost:8080/reservations/restaurant/' + restaurantId,
+        this.http.get(baseURL + '/reservations/restaurant/' + restaurantId,
         { headers: this.authService.getHeaders() }).subscribe(
         (data) => {
             const reservations = data.json();
@@ -32,13 +33,13 @@ export class ReservationService {
         params.append('restaurantId', String(restaurantId));
         params.append('date', date.toISOString());
 
-        return this.http.get('http://localhost:8080/reservations/availableSlots',
+        return this.http.get(baseURL + '/reservations/availableSlots',
             { params: params, headers: this.authService.getHeaders() });
     }
 
     makeReservation(date: Date, restauranId: number, tableId: number) {
         const user = this.authService.getUser();
-        return this.http.post('http://localhost:8080/reservations/makeReservation',
+        return this.http.post(baseURL + '/reservations/makeReservation',
             {
                 reservationDateISO: date.toISOString(), restaurantId: restauranId,
                 tableId: tableId, clientEmailAddress: user.emailAddress
@@ -46,7 +47,7 @@ export class ReservationService {
     }
 
     getPendingReservations(restaurantId: number) {
-        return this.http.get('http://localhost:8080/reservations/pendingReservations/' + restaurantId,
+        return this.http.get(baseURL + '/reservations/pendingReservations/' + restaurantId,
             { headers: this.authService.getHeaders() });
     }
 
@@ -54,19 +55,19 @@ export class ReservationService {
         const params = new URLSearchParams();
         params.append('reservationId', reservationId.toString());
 
-        return this.http.post('http://localhost:8080/reservations/accept', params, { headers: this.authService.getHeaders() });
+        return this.http.post(baseURL + '/reservations/accept', params, { headers: this.authService.getHeaders() });
     }
 
     rejectReservation(reservationId: number) {
         const params = new URLSearchParams();
         params.append('reservationId', reservationId.toString());
 
-        return this.http.post('http://localhost:8080/reservations/reject', params, { headers: this.authService.getHeaders() });
+        return this.http.post(baseURL + '/reservations/reject', params, { headers: this.authService.getHeaders() });
     }
 
     getClientReservations() {
         const clientId = this.authService.getUser().id;
-        this.http.get('http://localhost:8080/reservations/client/' + clientId.toString(),
+        this.http.get(baseURL + '/reservations/client/' + clientId.toString(),
             { headers: this.authService.getHeaders() }).subscribe(
             (data) => {
                 const reservations = data.json();
@@ -80,7 +81,7 @@ export class ReservationService {
         const params = new URLSearchParams();
         params.append('reservationId', reservationId.toString());
         console.log(this.authService.getHeaders());
-        this.http.post('http://localhost:8080/reservations/cancel', params, { headers: this.authService.getHeaders() }).subscribe(
+        this.http.post(baseURL + '/reservations/cancel', params, { headers: this.authService.getHeaders() }).subscribe(
             (data) => {
                 this.getClientReservations();
             },

@@ -21,6 +21,8 @@ export class EditRestaurantComponent implements OnInit {
   menu: MenuItem[] = [];
   restaurantForm: FormGroup;
 
+  tableEditMessage = '';
+
   constructor(private restaurantService: RestaurantService,
     private helperService: HelperRestService,
     private activatedRoute: ActivatedRoute,
@@ -138,11 +140,46 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onAddTable(tableId, tableSeats) {
-    this.tables.push({ id: null, restaurantTableId: tableId, seats: tableSeats, restaurantId: -1 });
+
+    if (this.editMode) {
+      this.restaurantService.addTable(this.id, tableId, tableSeats).subscribe(
+        (data) => {
+          this.tableEditMessage = data.text();
+          this.getTables();
+        },
+        (error) => {
+          this.tableEditMessage = error.text();
+        }
+      );
+    } else {
+      this.tables.push({ id: null, restaurantTableId: tableId, seats: tableSeats, restaurantId: -1 });
+    }
   }
 
   onDeleteTable(index) {
-    this.tables.splice(index, 1);
+    if (this.editMode) {
+      this.restaurantService.removeTable(this.tables[index].id).
+        subscribe(
+        data => {
+          console.log(data);
+          this.tableEditMessage = data.text();
+          this.getTables();
+        },
+        error => {
+          console.log(error.text());
+          this.tableEditMessage = error.text();
+        }
+        );
+    } else {
+      this.tables.splice(index, 1);
+    }
+  }
+
+  getTables() {
+    this.restaurantService.getRestaurantTables(this.id).subscribe(
+      data => this.tables = data.json(),
+      error => console.log(error)
+    );
   }
 
   onAddDish(name: string, price: number, description: string) {
