@@ -2,6 +2,9 @@
   "name": "restaurant-webapp",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "6.11.1"
+  },
   "scripts": {
     "ng": "ng",
     "heroku-prebuild": "npm install -g http-server",
