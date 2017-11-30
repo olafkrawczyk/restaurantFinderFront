@@ -25,6 +25,8 @@ export class ClientReservationLitemComponent implements OnInit {
   }
 
   onCancelReservation() {
-    this.reservationService.cancelReservation(this._reservation.id);
+    if (confirm('Cancel reservation?')) {
+      this.reservationService.cancelReservation(this._reservation.id);
+    }
   }
 }
