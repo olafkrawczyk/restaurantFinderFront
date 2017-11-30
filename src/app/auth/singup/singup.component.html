@@ -22,12 +22,12 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" name="password" value="" id="password" ngModel class="form-control" required>
+        <input type="password" name="password" value="" id="password" ngModel class="form-control" required minlength="6">
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Sign Up</button>
     </form>
     <div class="alert alert-warning" *ngIf="!f.valid && f.touched" style="margin-top: 10px;">
-      All fields are required
+      All fields are required. Password should be at least 6 characters long.
     </div>
     <div class="alert alert-warning" *ngIf="errorMessage" style="margin-top: 10px;">
       {{ errorMessage }}
