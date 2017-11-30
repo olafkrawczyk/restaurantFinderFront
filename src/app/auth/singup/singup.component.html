@@ -29,5 +29,8 @@
     <div class="alert alert-warning" *ngIf="!f.valid && f.touched" style="margin-top: 10px;">
       All fields are required
     </div>
+    <div class="alert alert-warning" *ngIf="errorMessage" style="margin-top: 10px;">
+      {{ errorMessage }}
+    </div>
   </div>
 </div>

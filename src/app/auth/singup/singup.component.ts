@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class SingupComponent implements OnInit {
 
+  errorMessage;
+
   constructor(private authService: AuthService, private router: Router) {
   }
 
@@ -34,6 +36,7 @@ export class SingupComponent implements OnInit {
         this.router.navigate(['confirmation']);
       },
       (error) => {
+        this.errorMessage = error.text();
         console.log(error);
       }
     );
