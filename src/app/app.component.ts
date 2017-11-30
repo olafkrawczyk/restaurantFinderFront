@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
-export const baseURL = 'https://tablersv.herokuapp.com';
+export const baseURL = 'http://localhost:8080';
 
 @Component({
   selector: 'app-root',

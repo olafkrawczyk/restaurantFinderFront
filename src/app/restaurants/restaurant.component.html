@@ -66,9 +66,12 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" [disabled]="!authService.getUser()">View tables</button>
-                
+
             </form>
-            <p *ngIf="!authService.getUser()">Please sign in to book table</p>
+
+            <div class="alert alert-info" *ngIf="!authService.getUser()" style="margin-top: 5px">
+                <strong>Info!</strong> Please sign in to book a table
+            </div>
             <div class="row tables-result">
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="reservations">

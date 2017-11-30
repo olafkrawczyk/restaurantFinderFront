@@ -183,6 +183,9 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onAddDish(name: string, price: number, description: string) {
+    if (!this.menu) {
+      this.menu = [];
+    }
     this.menu.push({ dishName: name, price: price, description: description });
   }
 
