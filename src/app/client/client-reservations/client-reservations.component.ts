@@ -12,7 +12,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class ClientReservationsComponent implements OnInit, OnDestroy {
 
-  reservations: {};
+  reservations: any[];
   reservationSubscription: Subscription;
   constructor(private reservationService: ReservationService, private authService: AuthService) { }
 
