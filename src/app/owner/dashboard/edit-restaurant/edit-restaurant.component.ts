@@ -157,6 +157,9 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onDeleteTable(index) {
+    if (!confirm('Delete table?')) {
+      return;
+    }
     if (this.editMode) {
       this.restaurantService.removeTable(this.tables[index].id).
         subscribe(
@@ -190,6 +193,8 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onDeleteDish(index) {
-    this.menu.splice(index, 1);
+    if (confirm('Cancel delete dish?')) {
+      this.menu.splice(index, 1);
+    }
   }
 }
