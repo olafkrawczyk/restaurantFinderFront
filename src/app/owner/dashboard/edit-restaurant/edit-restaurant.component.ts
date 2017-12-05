@@ -157,6 +157,9 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onDeleteTable(index) {
+    if (!confirm('Delete table?')) {
+      return;
+    }
     if (this.editMode) {
       this.restaurantService.removeTable(this.tables[index].id).
         subscribe(
@@ -183,10 +186,15 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onAddDish(name: string, price: number, description: string) {
+    if (!this.menu) {
+      this.menu = [];
+    }
     this.menu.push({ dishName: name, price: price, description: description });
   }
 
   onDeleteDish(index) {
-    this.menu.splice(index, 1);
+    if (confirm('Cancel delete dish?')) {
+      this.menu.splice(index, 1);
+    }
   }
 }

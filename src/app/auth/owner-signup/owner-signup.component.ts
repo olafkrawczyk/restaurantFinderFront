@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerSignupComponent implements OnInit {
 
+  errorMessage;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class OwnerSignupComponent implements OnInit {
         this.router.navigate(['confirmation']);
       },
       (error) => {
+        this.errorMessage = error.text();
         console.log(error);
       }
     );

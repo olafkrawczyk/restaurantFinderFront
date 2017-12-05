@@ -4,7 +4,7 @@
 
     <div class="jumbotron centered">
       <h1>Welcome to TableReserve</h1>
-      <p>Please start with filling form below</p>
+      <p>To start please fill up form below</p>
       <form class="form-inline" (ngSubmit)="onSearchSubmit(f)" #f="ngForm">
 
         <label for="people"> People</label>
@@ -64,6 +64,9 @@
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
+    <div class="alert alert-info" *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
 
     <div class="alert alert-info" *ngIf="!restaurants">
       To start please fill form above ...

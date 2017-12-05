@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
   cuisines;
   cities;
 
+  errorMessage;
+
   constructor(private authService: AuthService, private restaurantService: RestaurantService,
     private router: Router, private helperService: HelperRestService) {
     this.date = new Date();
@@ -52,10 +54,20 @@ export class HomeComponent implements OnInit {
   }
 
   onSearchSubmit(form: NgForm) {
+    this.errorMessage = null;
+    const timeNow = new Date();
+    timeNow.setHours(timeNow.getHours() + 1);
+
     console.log(form.value);
     this.people = form.value['people'];
     this.time = form.value['time'];
     this.date.setHours(+this.time.slice(0, 2), +this.time.slice(3, 5));
+
+    if (this.date.getTime() < timeNow.getTime()) {
+      this.errorMessage = 'Incorrect date. Please select date at lest in one hour from now';
+      return;
+    }
+
     this.restaurantService.getRestaurantsByParams(form.value).subscribe(
       (data) => {
         console.log(data.json());
