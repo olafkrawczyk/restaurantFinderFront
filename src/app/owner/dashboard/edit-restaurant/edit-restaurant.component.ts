@@ -140,7 +140,10 @@ export class EditRestaurantComponent implements OnInit {
   }
 
   onAddTable(tableId, tableSeats) {
-
+    if (!(tableId && tableSeats)) {
+      this.tableEditMessage = 'All fields are required';
+      return;
+    }
     if (this.editMode) {
       this.restaurantService.addTable(this.id, tableId, tableSeats).subscribe(
         (data) => {
