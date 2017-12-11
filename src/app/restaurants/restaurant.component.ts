@@ -24,6 +24,8 @@ export class RestaurantComponent implements OnInit {
     restaurant: Restaurant;
     reservations: Reservation[];
 
+    errorMsg;
+
     constructor(private activatedRout: ActivatedRoute, private restuarantService: RestaurantService,
                 private reservationService: ReservationService, public authService: AuthService, private router: Router) {
         this.date = new Date();
@@ -70,7 +72,10 @@ export class RestaurantComponent implements OnInit {
                 console.log(reservatonsTemp);
                 this.reservations = reservatonsTemp;
             },
-            error => console.log(error)
+            error => {
+                console.log(error);
+                this.errorMsg = error.text();
+            }
         );
     }
 
@@ -85,7 +90,8 @@ export class RestaurantComponent implements OnInit {
         this.reservationService.makeReservation(reservation.reservationDate,
                 reservation.restaurantTable.restaurantId,
                 reservation.restaurantTable.id).subscribe(
-                (data) => this.router.navigate(['/client', 'reservations'])
+                (data) => this.router.navigate(['/client', 'reservations']),
+                (error) => this.errorMsg = error.text()
             );
     }
 
